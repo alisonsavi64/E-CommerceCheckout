@@ -13,4 +13,12 @@ export default class ItemRepositoryMemory implements ItemRepository {
         if (!item) throw new Error("Item not found");
         return item 
     }
+
+    async save(item: Item): Promise<void> {
+        this.items.push(item);
+    }
+
+    async list(): Promise<Item[]> {
+        return this.items;
+    }
 }

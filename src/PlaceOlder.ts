@@ -1,9 +1,10 @@
 import ItemRepository from "./ItemRepository";
 import Order from "./Order";
+import OrderRepository from "./OrderRepository";
 
 export default class PlaceOrder {
 
-    constructor(readonly itemRepository: ItemRepository) {
+    constructor(readonly itemRepository: ItemRepository, readonly orderRepository: OrderRepository) {
     }
 
     async execute (input: Input): Promise<Output> {
@@ -12,7 +13,8 @@ export default class PlaceOrder {
             const item = await this.itemRepository.get(orderItem.idItem)
             order.addItem(item, orderItem.quantity);
         }
-        const total = 0;
+        await this.orderRepository.save(order);
+        const total = order.getTotal();
         return {
             total
         }
