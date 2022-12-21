@@ -1,4 +1,4 @@
-import ItemRepositoryMemory from "../src/ItemReposotoryMemory";
+import ItemRepositoryMemory from "../src/ItemRepositoryMemory";
 import PlaceOrder from "../src/PlaceOlder";
 
 test("Deve fazer um pedido", async function (){
