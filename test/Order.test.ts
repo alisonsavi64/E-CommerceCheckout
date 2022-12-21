@@ -1,4 +1,5 @@
 import Coupon from "../src/Coupon";
+import Dimension from "../src/Dimension";
 import Item from "../src/Item";
 import Order from "../src/Order";
 
@@ -37,9 +38,9 @@ test("Deve criar um pedido com cupom de desconto expirado", function() {
 
 test("Deve criar um pedido com cupom de desconto expirado", function() {
     const order = new Order("935.411.347-80", new Date("2021-03-10T10:00:00"));
-    order.addItem(new Item(1, "Guitarra", 1000, 100, 30, 10, 3), 1);
-    order.addItem(new Item(2, "Amplificador", 5000, 50, 50, 50, 20), 1);
-    order.addItem(new Item(3, "Cabo", 30, 10, 10, 10, 1), 3);
+    order.addItem(new Item(1, "Guitarra", 1000, new Dimension(100, 30, 10), 3), 1);
+    order.addItem(new Item(2, "Amplificador", 5000, new Dimension(50, 50, 50), 20), 1);
+    order.addItem(new Item(3, "Cabo", 30, new Dimension(10, 10, 10), 1), 3);
     order.addCoupon(new Coupon("VALE20", 20, new Date("2021-03-01T10:00:00")));
     const freight = order.getFreight();
     expect(freight).toBe(260);
