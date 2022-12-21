@@ -11,8 +11,7 @@ export default class Cpf {
     validate (rawCpf : string | null | undefined) {
         if (!rawCpf) return false;
         const cpf = this.cleanCpf(rawCpf);
-        if (this.isInvalidLengthCpf(cpf)) return false;
-        if (this.isIdenticalDigits(cpf)) return false;  
+        if (this.isInvalidLengthCpf(cpf) || this.isIdenticalDigits(cpf)) return false; 
         const calculatedCheckDigit1  = this.calculateCheckDigit(cpf, this.FIRTS_DIGIT_FACTOR);
         const calculatedCheckDigit2  = this.calculateCheckDigit(cpf, this.SECONF_DIGIT_FACTOR);
         let ckeckDigit = this.extractCheckDigits(cpf);  
