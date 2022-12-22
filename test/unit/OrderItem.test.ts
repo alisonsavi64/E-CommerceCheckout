@@ -1,5 +1,4 @@
-import { convertToObject } from "typescript";
-import OrdemItem from "../src/OrderItem";
+import OrdemItem from "../../src/domain/entity/OrderItem";
 
 test("Deve criar um item de pedido", function() {
     const orderItem = new OrdemItem(1, 1000, 2);
